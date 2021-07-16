@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <record id="view_saml_provider_form" model="ir.ui.view">
+            <field name="name">auth.saml.provider.form</field>
+            <field name="model">auth.saml.provider</field>
+            <field name="arch" type="xml">
+                <form string="arch">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="client_id" />
+                            <field name="enabled" />
+                            <field name="body" />
+                            <field name="css_class" groups="base.group_no_one" />
+                        </group>
+                        <group>
+                            <field name="auth_endpoint" />
+                            <field name="scope" />
+                            <field name="validation_endpoint" />
+                            <field name="data_endpoint" />
+                        </group>
+                        <group>
+                            <group>
+                                <field name="image" widget="image"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_saml_provider_tree" model="ir.ui.view">
+            <field name="name">auth.saml.provider.tree</field>
+            <field name="model">auth.saml.provider</field>
+            <field name="arch" type="xml">
+                <tree string="arch">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" />
+                    <field name="client_id" />
+                    <field name="enabled" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_saml_provider" model="ir.actions.act_window">
+            <field name="name">SAML Providers</field>
+            <field name="res_model">auth.saml.provider</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_saml_providers" name="SAML Providers"
+            parent="base.menu_users" sequence="31"
+            action="action_saml_provider" groups="base.group_no_one"/>
+</odoo>
